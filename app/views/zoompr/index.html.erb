@@ -1,0 +1,65 @@
+<% 
+thumbnails = get_imagestack_thumbnails_for_ms(@ms)
+%>
+
+<div id="zoompr">
+  <% if @error && @error.length > 0 %>
+    <p><strong>Sorry, there was a problem fulfilling this request:</strong> <%= @error %></p>
+  <% else %>
+    <% if current_user %>  
+      <% dm_url = "  http://ada.drew.edu/annotation_store/upload_parker_image/?druid=#{@druid}&filename=#{@image}&refererUrl=#{request.url}&msNum=#{@ms}&folio=#{@folio}&repository=parker&username=#{current_user.email}&width=#{@image_width}&height=#{@image_height}&sequence_num=#{@sequence_num}&total_sequence_num=#{@total_sequence_num}" %>
+      <% tpen_url = "http://t-pen.org/TPEN/parkerRedirect.jsp?pageName=#{@image}.jp2" %>
+      <h2>MS <%= @ms %></h2>
+      <div class="headline"><%= sanitize(Base64.decode64(@headline), :tags => %w(strong br)) %></div>
+      <p>
+      <ul>
+        <li><a rel="external" target="_blank" href="<%= dm_url %>">Annotate in DM</a></li>  
+        <li><a rel="external" target="_blank" href="<%= tpen_url %>">Transcribe this Manuscript Page "on the fly" in T-PEN</a></li>
+        <li><a rel="external" target="_blank" href="<%= tpen_url + "&project=true" %>">  Create a  Transcription project for this Manuscript  in T-PEN</a></li>
+      </ul>
+    <% else %>
+      <p>Please login or create an account to annotate or transcribe.</p>
+    <% end %>
+    
+    <% if !current_user.nil? and current_user.parker_image_access == 1 %>
+    <% if thumbnails %>
+    <form id="select_page" name="select_page" action="/zoompr/index" method="get">
+      <select name="druid" id="select_page_dropdown">
+      <optgroup label="Select page">      
+      <% number_of_thumbnails = thumbnails[:images].size - 1 %>  
+      <% for i in (1..thumbnails[:images].size - 1) do %> 
+        <% image = thumbnails[:images][i] %> 
+        <% title = thumbnails[:titles][i] %> 
+        <% width = thumbnails[:widths][i] %>
+        <% height = thumbnails[:heights][i] %>
+        <option value="/zoompr?druid=<%= @druid %>&#38;ms=<%= @ms %>&#38;folio=<%= title %>&#38;image=<%= image %>&#38;height=<%= height %>&#38;width=<%= width %>&#38;sequence_num=<%= @sequence_num %>&#38;total_sequence_num=<%= @total_sequence_num %>&#38;headline=<%= @headline %>">
+            <%= title %>
+        </option>    
+      <% end %>
+      </optgroup>
+      </select>
+      <span class="page_nav">
+          <a id="first_page"><img src="/images/first_page.png" alt="first page" title="First page" /></a>
+          <a id="previous_page"><img src="/images/previous_page.png" alt="previous page" title="Previous page" /></a>
+          <a id="next_page"><img src="/images/next_page.png" alt="next page" title="Next page" /></a>
+          <a id="last_page"><img src="/images/last_page.png" alt="last page" title="Last page" /></a>
+      </span>
+      <span class="page_number">Current page: <strong><%= params[:folio] %></strong></span>
+      </form>
+    <% end %>
+    <div id="zpr-fullscreen" style="height: 700px; width: 500px;" ></div>
+
+      <script type="text/javascript" src="javascripts/jquery-1.4.2.min.js"></script>
+      <script type="text/javascript" src="javascripts/zpr.js"></script>
+      <script type="text/javascript"> 
+        $(document).ready(function() {
+           var z = new zpr('zpr-fullscreen', { 'imageStacksURL': '/page/<%= @druid %>/<%= @image %>', 'width': <%= @image_width %>, 'height': <%= @image_height %>, 'marqueeImgSize': 125 });
+        });
+      </script>   
+      <br clear="all" />
+    </div>
+    <% else %>
+      <img src="<%= get_page(@druid, @image, 'small') %>" alt="Manuscript Page" />
+    <% end %>
+
+  <% end %>

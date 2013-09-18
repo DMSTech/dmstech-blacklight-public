@@ -5,6 +5,18 @@ GIT
     gssapi (1.1.2)
       ffi (>= 1.0.1)
 
+PATH
+  remote: ../blacklight
+  specs:
+    blacklight (4.4.1)
+      bootstrap-sass (>= 2.2.0, < 2.4)
+      kaminari (~> 0.13)
+      marc (>= 0.4.3, < 1.1)
+      nokogiri (~> 1.6)
+      rails (>= 3.2.6, < 5)
+      rsolr (~> 1.0.6)
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   remote: http://sul-gems.stanford.edu/
@@ -36,14 +48,6 @@ GEM
     arel (4.0.0)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    blacklight (4.4.0)
-      bootstrap-sass (>= 2.2.0, < 2.4)
-      kaminari (~> 0.13)
-      marc (>= 0.4.3, < 1.1)
-      nokogiri (~> 1.6)
-      rails (>= 3.2.6, < 5)
-      rsolr (~> 1.0.6)
-      sass-rails
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     builder (3.1.4)
@@ -202,7 +206,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blacklight
+  blacklight!
   bootstrap-sass
   capistrano
   capybara
@@ -215,6 +219,7 @@ DEPENDENCIES
   lyberteam-capistrano-devel
   net-ssh-krb
   rails (= 4.0.0)
+  rest-client
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc

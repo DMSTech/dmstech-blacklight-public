@@ -45,7 +45,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'blacklight'
+gem 'blacklight', :path => '../blacklight'
 
 group :test do
   gem 'capybara'
@@ -61,3 +61,4 @@ end
 gem "bootstrap-sass"
 gem "devise"
 gem "devise-guests", "~> 0.3"
+gem "rest-client"

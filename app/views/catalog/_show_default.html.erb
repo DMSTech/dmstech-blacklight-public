@@ -1,0 +1,32 @@
+<%# default partial to display solr document fields in catalog show view -%>
+<%= render_manuscript_thumbnail document, :size => 'small' %>
+
+<dl class="dl-horizontal  dl-invert">
+  <% document_show_fields(document).each do |solr_fname, field| -%>
+    <% if should_render_show_field? document, field %>
+      <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_label document, :field => solr_fname %></dt>
+      <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value document, :field => solr_fname %></dd>
+    <% end -%>
+  <% end -%>
+</dl>
+
+<% if !current_user.nil? and current_user.parker_image_access == 1 and get_manuscript_druid(document) %>
+<iframe src="http://sul-reader.stanford.edu/flipbook2/embed.jsp?id=<%= get_manuscript_druid(document) %>" width='650px' height='600px' style='border: 1px solid #666;padding:0;margin:0;'></iframe>
+<div><a target="_blank" href="http://sul-reader.stanford.edu/flipbook2/embed.jsp?id=<%= get_manuscript_druid(document) %>#page/1/mode/2up">Open in full screen mode</a></div>
+<% end %>
+
+<% if thumbnails = get_imagestack_thumbnails(document) %>
+<h2>Images</h2>
+  <ul class="ms" id="quad">
+  <% number_of_thumbnails = thumbnails[:images].size - 1 %>
+  <% for i in (1..number_of_thumbnails) do %> 
+    <% image = thumbnails[:images][i] %> 
+    <% title = thumbnails[:titles][i] %> 
+    <% width = thumbnails[:widths][i] %>
+    <% height = thumbnails[:heights][i] %>
+    <li class="ms quad"><%= link_to title, zoompr_path(:params => {:ms => get_manuscript_number(document), :druid => get_manuscript_druid(document), :folio => title, :image => image, :width => width.to_i, :height => height.to_i}, :total_sequence_num => number_of_thumbnails - 1, :sequence_num => i - 1, :headline =>  Base64.encode64(create_headline(document))) %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+

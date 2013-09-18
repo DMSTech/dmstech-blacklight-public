@@ -1,4 +1,11 @@
+
+$logo_image: 'logo.png' !default;
+
 @import 'bootstrap';
 @import 'bootstrap-responsive';
 
 @import 'blacklight/blacklight';
+
+.document-thumbnail img {
+  @extend .span2;
+}

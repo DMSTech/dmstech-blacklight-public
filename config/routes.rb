@@ -2,6 +2,13 @@ Dms::Application.routes.draw do
   devise_for :users
   root :to => "catalog#index"
   Blacklight.add_routes(self)
+
+  get 'image/:druid/:file_name/:size', to: "image#stream"
+
+  get 'page/:druid/:file_name/:size', to: "image#stream_zoompr"
+
+  get 'zoompr/:id', to: 'zoompr#index', as: 'zoompr'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

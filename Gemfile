@@ -49,7 +49,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'blacklight', :path => '../blacklight'
+gem 'blacklight', ">= 4.4.1"
 
 group :test do
   gem 'capybara'

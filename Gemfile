@@ -60,7 +60,7 @@ group :deployment do
   gem 'capistrano'
   gem 'lyberteam-capistrano-devel'
   gem 'net-ssh-krb'
-  gem 'gssapi', :github => 'cbeer/gssapi'
+  gem 'gssapi', :git => 'https://github.com/cbeer/gssapi.git'
 end
 gem "bootstrap-sass"
 gem "devise"

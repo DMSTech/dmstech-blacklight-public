@@ -9,7 +9,7 @@ set :default_stage, "development"
 set :bundle_flags, "--quiet"
 
 set :repository, "."
-set :deploy_via, :remote_cache
+set :deploy_via, :copy
 
 set :shared_children, %w(
   tmp

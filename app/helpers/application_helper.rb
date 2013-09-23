@@ -1,7 +1,7 @@
 module ApplicationHelper
   def render_manuscript_thumbnail document, image_options = {}
     image_options[:size] ||= 'thumb'
-    manuscript_number = get_manuscript_number(document)
+    manuscript_number = document.manuscript_number
     thumbnail = nil 
     if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
       druid = PARKER_MASTER[manuscript_number]['druid']
@@ -14,17 +14,6 @@ module ApplicationHelper
     end
 
     content_tag :div, thumbnail, :class => 'document-thumbnail'
-  end
-
-  def get_manuscript_number(document)
-    return nil if document['collection_display'].nil?
-    if document['collection_display'].include? 'Parker Medieval Manuscripts'
-      manuscript_number = document.first('idno_display').to_s.sub('CCCC MS ', '')
-      if manuscript_number =~ /^\d$/
-        manuscript_number = manuscript_number.to_i
-      end
-      return manuscript_number
-    end
   end
 
   def get_preview_image(document, druid, size)
@@ -43,13 +32,8 @@ module ApplicationHelper
   def get_imagestack_thumbnails(document)
     return nil if document['collection_display'].nil?
 
-    if document['collection_display'].include? 'Parker Medieval Manuscripts'
-      manuscript_number = document.first('idno_display').to_s.sub('CCCC MS ', '')
-
-                if manuscript_number =~ /^\d$/
-        manuscript_number = manuscript_number.to_i
-      end
-
+    if manuscript_number = document.manuscript_number
+     
       # We need to change 524/524_fib.jpg to 524_fib_46
       thumbnails = Hash.new
       processed_images = Array.new
@@ -71,10 +55,7 @@ module ApplicationHelper
   end
 
     def get_imagestack_thumbnails_for_ms(manuscript_number)
-      if manuscript_number.is_number?
-        manuscript_number = manuscript_number.to_i
-      end
-
+      
       thumbnails = Hash.new
       processed_images = Array.new
       images = PARKER_MASTER[manuscript_number]['pages'].split(',')
@@ -103,16 +84,14 @@ module ApplicationHelper
     end
   end
 
-  def get_manuscript_druid document
-    manuscript_number = get_manuscript_number(document)
-    if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
-      PARKER_MASTER[manuscript_number]['druid'] 
-    end
-  end
-
   def create_headline(document)
     headline = "<strong>#{document['qualified_idno_display']}</strong><br />#{document['material_display']}, #{document['dimensions_display']}, #{document['origDate_display']}<br />#{document['msTitle_display']}".html_safe
     return headline
+  end
+  
+  def get_page(druid, page, size)
+    image_url = "/image/#{druid}/#{page}/#{size}"
+    return image_url
   end
 
 end

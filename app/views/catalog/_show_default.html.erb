@@ -10,9 +10,9 @@
   <% end -%>
 </dl>
 
-<% if !current_user.nil? and current_user.parker_image_access == 1 and get_manuscript_druid(document) %>
-<iframe src="http://sul-reader.stanford.edu/flipbook2/embed.jsp?id=<%= get_manuscript_druid(document) %>" width='650px' height='600px' style='border: 1px solid #666;padding:0;margin:0;'></iframe>
-<div><a target="_blank" href="http://sul-reader.stanford.edu/flipbook2/embed.jsp?id=<%= get_manuscript_druid(document) %>#page/1/mode/2up">Open in full screen mode</a></div>
+<% if !current_user.nil? and current_user.parker_image_access == 1 and document.manuscript_druid %>
+<iframe src="http://sul-reader.stanford.edu/flipbook2/embed.jsp?id=<%= document.manuscript_druid %>" width='650px' height='600px' style='border: 1px solid #666;padding:0;margin:0;'></iframe>
+<div><a target="_blank" href="http://sul-reader.stanford.edu/flipbook2/embed.jsp?id=<%= document.manuscript_druid %>#page/1/mode/2up">Open in full screen mode</a></div>
 <% end %>
 
 <% if thumbnails = get_imagestack_thumbnails(document) %>
@@ -24,7 +24,7 @@
     <% title = thumbnails[:titles][i] %> 
     <% width = thumbnails[:widths][i] %>
     <% height = thumbnails[:heights][i] %>
-    <li class="ms quad"><%= link_to title, zoompr_path(:params => {:ms => get_manuscript_number(document), :druid => get_manuscript_druid(document), :folio => title, :image => image, :width => width.to_i, :height => height.to_i}, :total_sequence_num => number_of_thumbnails - 1, :sequence_num => i - 1, :headline =>  Base64.encode64(create_headline(document))) %></li>
+    <li class="ms quad"><%= link_to title, zoompr_path(:params => {:ms => document.manuscript_number, :druid => document.manuscript_druid, :folio => title, :image => image, :width => width.to_i, :height => height.to_i}, :total_sequence_num => number_of_thumbnails - 1, :sequence_num => i - 1, :headline =>  Base64.encode64(create_headline(document))) %></li>
   <% end %>
   </ul>
 <% end %>

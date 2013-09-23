@@ -2,12 +2,6 @@
 class SolrDocument 
 
   include Blacklight::Solr::Document    
-      # The following shows how to setup this blacklight document to display marc documents
-  extension_parameters[:marc_source_field] = :marc_display
-  extension_parameters[:marc_format_type] = :marcxml
-  use_extension( Blacklight::Solr::Document::Marc) do |document|
-    document.key?( :marc_display  )
-  end
   
   field_semantics.merge!(    
                          :title => "title_display",
@@ -31,5 +25,25 @@ class SolrDocument
   # single valued. See Blacklight::Solr::Document::ExtendableClassMethods#field_semantics
   # and Blacklight::Solr::Document#to_semantic_values
   # Recommendation: Use field names from Dublin Core
-  use_extension( Blacklight::Solr::Document::DublinCore)    
+  use_extension( Blacklight::Solr::Document::DublinCore)   
+
+  def manuscript_number
+    return nil if self['collection_display'].nil?
+
+    @manuscript_number ||= if self['collection_display'].include? 'Parker Medieval Manuscripts'
+      manuscript_number = self.first('idno_display').to_s.sub('CCCC MS ', '')
+      if (Float(manuscript_number) != nil rescue false)
+        manuscript_number = manuscript_number.to_i
+      end
+      manuscript_number
+    end
+  end
+
+  def manuscript_druid
+    @manuscript_druid ||= if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
+      PARKER_MASTER[manuscript_number]['druid'] 
+    end
+  end
+
+
 end

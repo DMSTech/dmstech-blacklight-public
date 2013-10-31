@@ -4,7 +4,7 @@ require 'dlss/capistrano'
 require 'capistrano/ext/multistage'
 require 'pathname'
 
-set :stages, %W(development)
+set :stages, %W(development production)
 set :default_stage, "development"
 set :bundle_flags, "--quiet"
 

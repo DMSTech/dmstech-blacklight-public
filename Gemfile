@@ -4,9 +4,6 @@ source 'http://sul-gems.stanford.edu'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -61,7 +58,11 @@ group :deployment do
   gem 'lyberteam-capistrano-devel'
   gem 'net-ssh-krb'
   gem 'gssapi', :git => 'https://github.com/cbeer/gssapi.git'
+
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
+
 gem "bootstrap-sass"
 gem "devise"
 gem "devise-guests", "~> 0.3"

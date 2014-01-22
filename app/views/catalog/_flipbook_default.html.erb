@@ -1,0 +1,5 @@
+
+<% if current_user and current_user.has_parker_image_access? and document.manuscript_druid %>
+<iframe src="http://sul-reader.stanford.edu/flipbook2/embed.jsp?id=<%= document.manuscript_druid %>" width='650px' height='600px' style='border: 1px solid #666;padding:0;margin:0;'></iframe>
+<div><a target="_blank" href="http://sul-reader.stanford.edu/flipbook2/embed.jsp?id=<%= document.manuscript_druid %>#page/1/mode/2up">Open in full screen mode</a></div>
+<% end %>

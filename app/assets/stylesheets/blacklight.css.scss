@@ -2,10 +2,15 @@
 $logo_image: 'logo.png' !default;
 
 @import 'bootstrap';
-@import 'bootstrap-responsive';
 
 @import 'blacklight/blacklight';
 
 .document-thumbnail img {
   @extend .span2;
+  max-height: 200px;
+  margin-bottom: 1em;
+}
+
+.document {
+  @extend .clearfix;
 }

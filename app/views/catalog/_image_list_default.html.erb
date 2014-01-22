@@ -1,0 +1,15 @@
+
+<% if thumbnails = get_imagestack_thumbnails(document) %>
+<h2>Images</h2>
+  <ul class="ms" id="quad">
+  <% number_of_thumbnails = thumbnails[:images].size - 1 %>
+  <% for i in (1..number_of_thumbnails) do %> 
+    <% image = thumbnails[:images][i] %> 
+    <% title = thumbnails[:titles][i] %> 
+    <% width = thumbnails[:widths][i] %>
+    <% height = thumbnails[:heights][i] %>
+    <li class="ms quad"><%= link_to title, zoompr_path(:params => {:ms => document.manuscript_number, :druid => document.manuscript_druid, :folio => title, :image => image, :width => width.to_i, :height => height.to_i}, :total_sequence_num => number_of_thumbnails - 1, :sequence_num => i - 1, :headline =>  Base64.encode64(create_headline(document))) %></li>
+  <% end %>
+  </ul>
+<% end %>
+

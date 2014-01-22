@@ -1,7 +1,6 @@
 
-#header-navbar-fixed-top .brand {
+#header-navbar .navbar-brand {
   width: 330px;
-  height: 28px;
   text-indent: 140%;
 }
 
@@ -22,3 +21,10 @@ li.ms{
 #triple li.ms { width:33.333%; }
 .quad       { width:25%; }
 #six li.ms    { width:16.666%; }
+
+.document-metadata {
+  @extend .col-md-8;
+   dd:after {
+    clear: none;
+   }
+}

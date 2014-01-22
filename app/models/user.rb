@@ -12,4 +12,9 @@ class User < ActiveRecord::Base
             def to_s
               email
             end
+
+            def has_parker_image_access?
+              parker_image_access == 1
+
+            end
           end

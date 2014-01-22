@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 source 'http://sul-gems.stanford.edu'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -46,7 +46,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'blacklight', ">= 4.4.1"
+gem 'blacklight', "5.0.0.pre2"
 
 group :test do
   gem 'capybara'
@@ -55,9 +55,9 @@ end
 
 group :deployment do
   gem 'capistrano'
-  gem 'lyberteam-capistrano-devel'
-  gem 'net-ssh-krb'
-  gem 'gssapi', :git => 'https://github.com/cbeer/gssapi.git'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'lyberteam-capistrano-devel', '3.0.0.pre1'
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

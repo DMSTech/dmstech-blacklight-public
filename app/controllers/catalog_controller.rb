@@ -11,8 +11,10 @@ class CatalogController < ApplicationController
       :qt => 'standard',
       :q => '*:*',
       :rows => 10,
-      :facet => true
+      :facet => true,
+      :'facet.mincount' => 1
     }
+
 
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SolrHelper#solr_doc_params) or 
     ## parameters included in the Blacklight-jetty document requestHandler.
@@ -29,11 +31,13 @@ class CatalogController < ApplicationController
     config.index.show_link = 'qualified_idno_display'
     config.index.record_display_type = 'qualified_idno_display'
     config.index.thumbnail_method = :render_manuscript_thumbnail
+    config.index.partials = [:index_header,:links,:thumbnail, :index]
 
     # solr field configuration for document/show views
     config.show.html_title = 'qualified_idno_display'
     config.show.heading = 'qualified_idno_display'
     config.show.display_type = 'format'
+    config.show.partials = [:show_header, :show_thumbnail, :show, :flipbook, :image_list]
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -55,7 +59,7 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
 
-    config.add_facet_field 'collection_facet', :label => 'Collection'
+    config.add_facet_field 'collection_facet', :label => 'Collection', :single => true
     config.add_facet_field 'country_facet', :label => 'Country'
     config.add_facet_field 'institution_facet', :label => 'Institution', :limit => 20 
     config.add_facet_field 'settlement_facet', :label => 'Settlement', :limit => true 
@@ -80,8 +84,6 @@ class CatalogController < ApplicationController
     config.add_index_field 'origPlace_display' , :label  => 'Origin Place:'
     config.add_index_field 'material_display'  , :label  => 'Material:'
     config.add_index_field 'textLang_display'  , :label  => 'Language:'
-    config.add_index_field 'description_url'   , :label  => 'Description URL:'
-    config.add_index_field 'image_url'         , :label  => 'Image URL:'
 
 
     # solr fields to be displayed in the show (single result) view

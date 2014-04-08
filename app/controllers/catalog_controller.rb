@@ -28,15 +28,12 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.show_link = 'qualified_idno_display'
-    config.index.record_display_type = 'qualified_idno_display'
+    config.index.title_field = 'qualified_idno_display'
+    config.index.display_type_field = 'format'
     config.index.thumbnail_method = :render_manuscript_thumbnail
     config.index.partials = [:index_header,:links,:thumbnail, :index]
 
     # solr field configuration for document/show views
-    config.show.html_title = 'qualified_idno_display'
-    config.show.heading = 'qualified_idno_display'
-    config.show.display_type = 'format'
     config.show.partials = [:show_header, :show_thumbnail, :show, :flipbook, :image_list]
 
     # solr fields that will be treated as facets by the blacklight application

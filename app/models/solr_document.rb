@@ -44,6 +44,10 @@ class SolrDocument
       PARKER_MASTER[manuscript_number]['druid'] 
     end
   end
+  
+  def itemtype
+    "http://schema.org/CreativeWork"
+  end
 
 
 end

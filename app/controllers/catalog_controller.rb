@@ -74,34 +74,34 @@ class CatalogController < ApplicationController
 
    # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
-    config.add_index_field 'collection_display', :label  => 'Collection:'
-    config.add_index_field 'idno_display'      , :label  => 'Manuscript Identifier:'
-    config.add_index_field 'msTitle_display'   , :label  => 'Manuscript Title:'
-    config.add_index_field 'origDate_display'  , :label  => 'Origin Date:'
-    config.add_index_field 'origPlace_display' , :label  => 'Origin Place:'
-    config.add_index_field 'material_display'  , :label  => 'Material:'
-    config.add_index_field 'textLang_display'  , :label  => 'Language:'
+    config.add_index_field 'collection_display', :label  => 'Collection'
+    config.add_index_field 'idno_display'      , :label  => 'Manuscript Identifier'
+    config.add_index_field 'msTitle_display'   , :label  => 'Manuscript Title'
+    config.add_index_field 'origDate_display'  , :label  => 'Origin Date'
+    config.add_index_field 'origPlace_display' , :label  => 'Origin Place'
+    config.add_index_field 'material_display'  , :label  => 'Material'
+    config.add_index_field 'textLang_display'  , :label  => 'Language'
 
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
-    config.add_show_field 'collection_display',    :label  => 'Collection:'
-    config.add_show_field 'institution_display',   :label  => 'Institution:'
-    config.add_show_field 'repository_display',    :label  => 'Repository:'
-    config.add_show_field 'settlement_display',    :label  => 'Settlement:'
-    config.add_show_field 'country_display',       :label  => 'Country:'
-    config.add_show_field 'region_display',        :label  => 'Region:'
-    config.add_show_field 'idno_display',          :label  => 'Manuscript Identifier:'
-    config.add_show_field 'altIdentifier_display', :label  => 'Alternate Identifier:'
-    config.add_show_field 'msTitle_display',       :label  => 'Manuscript Title:'
-    config.add_show_field 'origDate_display',      :label  => 'Origin Date:'
-    config.add_show_field 'origPlace_display"',    :label  => 'Origin Place:'
-    config.add_show_field 'material_display',      :label  => 'Material:'
-    config.add_show_field 'textLang_display',      :label  => 'Language:'
-    config.add_show_field 'dimensions_display',    :label  => 'Dimensions:'
-    config.add_show_field 'provenance_display',    :label  => 'Provenance:'
-    config.add_show_field 'description_url',       :label  => 'Description URL:'
-    config.add_show_field 'image_url',             :label  => 'Image URL:'
+    config.add_show_field 'collection_display',    :label  => 'Collection'
+    config.add_show_field 'institution_display',   :label  => 'Institution'
+    config.add_show_field 'repository_display',    :label  => 'Repository', itemprop: 'publisher'
+    config.add_show_field 'settlement_display',    :label  => 'Settlement'
+    config.add_show_field 'country_display',       :label  => 'Country'
+    config.add_show_field 'region_display',        :label  => 'Region'
+    config.add_show_field 'idno_display',          :label  => 'Manuscript Identifier'
+    config.add_show_field 'altIdentifier_display', :label  => 'Alternate Identifier'
+    config.add_show_field 'msTitle_display',       :label  => 'Manuscript Title', itemprop: 'name'
+    config.add_show_field 'origDate_display',      :label  => 'Origin Date', itemprop: 'dateCreated'
+    config.add_show_field 'origPlace_display"',    :label  => 'Origin Place'
+    config.add_show_field 'material_display',      :label  => 'Material'
+    config.add_show_field 'textLang_display',      :label  => 'Language', itemprop: 'inLanguage'
+    config.add_show_field 'dimensions_display',    :label  => 'Dimensions'
+    config.add_show_field 'provenance_display',    :label  => 'Provenance'
+    config.add_show_field 'description_url',       :label  => 'Description URL', itemprop: 'sameAs'
+    config.add_show_field 'image_url',             :label  => 'Image URL', itemprop: 'thumbnailUrl'
 
   end
 

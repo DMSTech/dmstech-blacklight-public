@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
-source 'http://sul-gems.stanford.edu'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.0.9'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -57,7 +56,7 @@ group :deployment do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'lyberteam-capistrano-devel', '3.0.0.pre1'
+  gem 'lyberteam-capistrano-devel', '3.0.0'
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

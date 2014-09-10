@@ -57,8 +57,9 @@ group :deployment do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'lyberteam-capistrano-devel', '3.0.0'
-
+end
   # Use sqlite3 as the database for Active Record
+group :development do
   gem 'sqlite3'
 end
 

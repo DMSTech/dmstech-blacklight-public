@@ -11,6 +11,8 @@ set :repo_url, 'https://github.com/DMSTech/dmstech-blacklight-public.git'
 # set :deploy_to, '/var/www/my_app'
 set :deploy_to, "/home/lyberadmin/dms"
 
+set :log_level, :debug
+
 # Default value for :scm is :git
 # set :scm, :git
 

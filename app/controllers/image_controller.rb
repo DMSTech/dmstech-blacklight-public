@@ -10,7 +10,8 @@ class ImageController < ApplicationController
     if size != 'small' and size != 'thumb' and size != 'square' and parker_image_access != 1
       size = 'thumb'
     end
-    image_url = STACKS[:url] + "/image/app/#{druid}/#{file_name}_#{size}"
+    #image_url = STACKS[:url] + "/image/app/#{druid}/#{file_name}_#{size}"
+    image_url = STACKS[:url] + "/image/iiif/#{druid}%252F#{file_name}/full/,350/0/native
     file_contents = RestClient.get image_url
     Tempfile.open('temp') do |file|
       file.binmode

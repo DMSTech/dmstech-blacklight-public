@@ -25,6 +25,11 @@ module ApplicationHelper
     return preview_image_url
   end
 
+  def get_iiif_manifest(druid)
+    manuscript_manifest = "http://dms-data.stanford.edu/data/manifests/Parker/#{druid}/manifest.json"
+    return manuscript_manifest
+  end
+
   def get_ecodices_thumb(xmlid)
     thumb_url = "http://www.e-codices.unifr.ch/api/mobile/getPreviewImage/#{xmlid}"
     return thumb_url

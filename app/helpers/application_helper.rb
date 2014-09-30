@@ -2,10 +2,12 @@ module ApplicationHelper
   def render_manuscript_thumbnail document, image_options = {}
     image_options[:size] ||= 'thumb'
     manuscript_number = document.manuscript_number
-    thumbnail = nil 
+    thumbnail = nil
+    manuscript_manifest = nil 
     if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
       druid = PARKER_MASTER[manuscript_number]['druid']
       thumbnail = image_tag get_preview_image(document, druid, image_options[:size]), :alt => 'Manuscript preview', :class => 'thumbImg'
+      manuscript_manifest = get_iiif_manifest(druid)
     end
 
     # check if manuscript belongs to e-codices collection and get thumbnail
@@ -14,7 +16,6 @@ module ApplicationHelper
     end
 
     content_tag :div, thumbnail, :class => 'document-thumbnail'
-    label_tag => get_iiif_manifest(druid)
   end
 
   def get_preview_image(document, druid, size)

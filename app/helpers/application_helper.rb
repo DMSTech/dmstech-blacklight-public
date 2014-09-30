@@ -13,7 +13,8 @@ module ApplicationHelper
       thumbnail = image_tag get_ecodices_thumb(document['collection_id']), :alt => 'Manuscript preview', :class => 'thumbImg'
     end
 
-    content_tag :div, thumbnail, :class => 'document-thumbnail', :label => get_iiif_manifest(druid)
+    content_tag :div, thumbnail, :class => 'document-thumbnail'
+    label_tag => get_iiif_manifest(druid)
   end
 
   def get_preview_image(document, druid, size)

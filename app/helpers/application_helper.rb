@@ -3,7 +3,6 @@ module ApplicationHelper
     image_options[:size] ||= 'thumb'
     manuscript_number = document.manuscript_number
     thumbnail = nil
-    manuscript_manifest = nil 
     if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
       druid = PARKER_MASTER[manuscript_number]['druid']
       thumbnail = image_tag get_preview_image(document, druid, image_options[:size]), :alt => 'Manuscript preview', :class => 'thumbImg', :title => get_iiif_manifest(druid)
@@ -15,6 +14,15 @@ module ApplicationHelper
     end
 
     content_tag :div, thumbnail, :class => 'document-thumbnail'
+  end
+
+  def render_iiif_manifest document
+    manuscript_number = document.manuscript_number
+    manuscript_manifest = nil
+    if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
+      druid = PARKER_MASTER[manuscript_number]['druid']
+      manuscript_manifest = content_tag :a, :href => get_iiif_manifest(druid), "IIIF"
+    end
   end
 
   def get_preview_image(document, druid, size)

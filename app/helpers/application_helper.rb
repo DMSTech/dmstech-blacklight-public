@@ -6,7 +6,6 @@ module ApplicationHelper
     if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
       druid = PARKER_MASTER[manuscript_number]['druid']
       thumbnail = image_tag get_preview_image(document, druid, image_options[:size]), :alt => 'Manuscript preview', :class => 'thumbImg'
-      manifest = get_iiif_manifest(druid)
     end
 
     # check if manuscript belongs to e-codices collection and get thumbnail

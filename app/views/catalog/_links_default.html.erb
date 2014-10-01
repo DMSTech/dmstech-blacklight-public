@@ -1,5 +1,5 @@
 <div class="col-md-offset-1">
 <%= link_to "Description URL", document.get(:description_url) %> |
-<%= link_to "Image URL", document.get(:image_url) %>
-<%= link_to "IIIF", render_iiif_manifest document %>
+<%= link_to "Image URL", document.get(:image_url) %> |
+<%= link_to "IIIF", document.get(:render_iiif_manifest) %>
 </div>

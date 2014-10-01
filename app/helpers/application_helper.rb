@@ -16,14 +16,14 @@ module ApplicationHelper
     content_tag :div, thumbnail, :class => 'document-thumbnail'
   end
 
-  #def render_iiif_manifest document
-  #  manuscript_number = document.manuscript_number
-  #  manuscript_manifest = nil
-  #  if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
-  #    druid = PARKER_MASTER[manuscript_number]['druid']
-  #    manuscript_manifest = content_tag :a, :href => get_iiif_manifest(druid), "IIIF"
-  #  end
-  #end
+  def render_iiif_manifest document
+    manuscript_number = document.manuscript_number
+    manuscript_manifest = nil
+    if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
+      druid = PARKER_MASTER[manuscript_number]['druid']
+      manuscript_manifest = link_to "IIIF", get_iiif_manifest(druid)
+    end
+  end
 
   def get_preview_image(document, druid, size)
     thumbnails = get_imagestack_thumbnails(document)

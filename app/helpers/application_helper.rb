@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def render_iiif_manifest document
     manuscript_number = document.manuscript_number
-    manuscript_manifest = '#'
+    manuscript_manifest = '#null'
     if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
       druid = PARKER_MASTER[manuscript_number]['druid']
       manuscript_manifest = get_iiif_manifest(druid)

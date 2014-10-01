@@ -21,7 +21,7 @@ module ApplicationHelper
     manuscript_manifest = nil
     if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
       druid = PARKER_MASTER[manuscript_number]['druid']
-      manuscript_manifest = link_to "IIIF", get_iiif_manifest(druid)
+      manuscript_manifest = get_iiif_manifest(druid)
     end
   end
 

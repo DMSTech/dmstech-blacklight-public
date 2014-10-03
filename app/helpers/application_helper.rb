@@ -46,7 +46,7 @@ module ApplicationHelper
   def get_ecodices_iiif_manifest(xmlid)
     manuscript_manifest = "http://sr-svx-93.unifr.ch/metadata/iiif/#{xmlid}/manifest.json"
     return manuscript_manifest
-  #end
+  end
 
   def get_ecodices_thumb(xmlid)
     thumb_url = "http://www.e-codices.unifr.ch/api/mobile/getPreviewImage/#{xmlid}"

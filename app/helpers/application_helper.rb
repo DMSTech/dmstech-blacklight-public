@@ -22,12 +22,12 @@ module ApplicationHelper
     if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
       druid = PARKER_MASTER[manuscript_number]['druid']
       manuscript_manifest = get_iiif_manifest(druid)
-    end
+    #end
     
     # check if manuscript belongs to e-codices collection and get thumbnail
-    #if document.first('collection_display').to_s == 'Swiss Medieval Manuscripts'
-    #  manuscript_manifest = get_ecodices_iiif_manifest(document['collection_id'])
-    #end
+    elsif document.first('collection_display').to_s == 'Swiss Medieval Manuscripts'
+      manuscript_manifest = get_ecodices_iiif_manifest(document['collection_id'])
+    end
   end
 
   def get_preview_image(document, druid, size)

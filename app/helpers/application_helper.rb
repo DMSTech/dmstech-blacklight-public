@@ -5,7 +5,7 @@ module ApplicationHelper
     thumbnail = nil
     if manuscript_number and PARKER_MASTER.has_key?(manuscript_number)
       druid = PARKER_MASTER[manuscript_number]['druid']
-      thumbnail = image_tag get_preview_image(document, druid, image_options[:size]), :alt => 'Manuscript preview', :class => 'thumbImg', :title => get_iiif_manifest(druid)
+      thumbnail = image_tag get_preview_image(document, druid, image_options[:size]), :alt => 'Manuscript preview', :class => 'thumbImg'
     end
 
     # check if manuscript belongs to e-codices collection and get thumbnail
@@ -34,8 +34,8 @@ module ApplicationHelper
     thumbnails = get_imagestack_thumbnails(document)
     middle_image_index = thumbnails[:images].length / 2
     middle_image = thumbnails[:images][middle_image_index]
-    #preview_image_url = "/image/#{druid}/#{middle_image}/#{size}"
-    preview_image_url = "http://stacks.stanford.edu/image/iiif/#{druid}%252F#{middle_image}/full/,350/0/native.jpg"
+    preview_image_url = "/image/#{druid}/#{middle_image}/#{size}"
+    #preview_image_url = "http://stacks.stanford.edu/image/iiif/#{druid}%252F#{middle_image}/full/,350/0/native.jpg"
     return preview_image_url
   end
 

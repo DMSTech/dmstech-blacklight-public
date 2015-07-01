@@ -27,7 +27,7 @@ set :log_level, :debug
 # Default value for :linked_files is []
 set :linked_files, %w{
   config/database.yml
-  config/solr.yml
+  config/blacklight.yml
   config/stacks.yml
   config/secrets.yml
   config/parker-master.yml

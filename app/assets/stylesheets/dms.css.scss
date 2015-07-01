@@ -1,5 +1,6 @@
 $logo_image: 'logo.png' !default;
 
+@import 'bootstrap-sprockets';
 @import 'bootstrap';
 
 @import 'blacklight/blacklight';

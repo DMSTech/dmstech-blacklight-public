@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.9'
+gem 'rails', '4.2.3'
 
+# Use sass-powered bootstrap
+gem 'bootstrap-sass', "~> 3.3.4"
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+# JS Runtime. See https://github.com/rails/execjs#readme for more supported runtimes
+gem 'therubyracer'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
@@ -22,7 +22,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder', '~> 2.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -45,7 +45,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'blacklight', "5.3.0"
+gem 'blacklight', "5.13.1"
 
 group :test do
   gem 'capybara'
@@ -56,15 +56,21 @@ group :deployment do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
- # gem 'lyberteam-capistrano-devel', '3.0.0'
- gem 'lyberteam-capistrano-devel', '3.1.0.pre1' #github: 'sul-dlss/lyberteam-capistrano-devel'
+  gem 'capistrano-passenger'
+  gem 'lyberteam-capistrano-devel', '~> 3.2'
 end
+
   # Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3'
 end
 
-gem "bootstrap-sass"
 gem "devise"
 gem "devise-guests", "~> 0.3"
 gem "rest-client"
+
+# Use Squash for exception reporting
+gem 'squash_ruby', require: 'squash/ruby'
+
+# Pinned to 1.3.3 until https://github.com/SquareSquash/rails/pull/15
+gem 'squash_rails', '1.3.3', require: 'squash/rails'

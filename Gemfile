@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.5.1'
 
 # Use sass-powered bootstrap
-gem 'bootstrap-sass', "~> 3.3.4"
+gem 'bootstrap-sass', "~> 3.3.6"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,7 +30,7 @@ group :doc do
 end
 
 group :production do
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.20'
 end
 
 # Use ActiveModel has_secure_password
@@ -45,7 +45,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'blacklight', "5.13.1"
+gem 'blacklight', "~> 5.18"
 
 group :test do
   gem 'capybara'
@@ -57,7 +57,7 @@ group :deployment do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
-  gem 'lyberteam-capistrano-devel', '~> 3.2'
+  gem 'dlss-capistrano', '~> 3.2'
 end
 
   # Use sqlite3 as the database for Active Record

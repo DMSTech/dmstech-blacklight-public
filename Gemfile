@@ -49,7 +49,7 @@ gem 'blacklight', "~> 5.18"
 
 group :test do
   gem 'capybara'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
 end
 
 group :deployment do

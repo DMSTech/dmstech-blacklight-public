@@ -114,6 +114,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    honeybadger (3.1.2)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.8.1)
@@ -128,7 +129,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    libv8 (3.16.14.13)
+    libv8 (3.16.14.19)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -220,15 +221,11 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.11)
-    squash_rails (1.3.3)
-      squash_ruby
-    squash_ruby (2.0.0)
-      json
     sshkit (1.8.1)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
       ref
     thor (0.19.4)
     thread_safe (0.3.6)
@@ -262,6 +259,7 @@ DEPENDENCIES
   devise
   devise-guests (~> 0.3)
   dlss-capistrano (~> 3.2)
+  honeybadger
   jbuilder (~> 2.0)
   jquery-rails
   mysql2 (~> 0.3.20)
@@ -271,8 +269,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc
   sqlite3
-  squash_rails (= 1.3.3)
-  squash_ruby
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)

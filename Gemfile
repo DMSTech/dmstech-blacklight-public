@@ -12,9 +12,6 @@ gem 'uglifier', '>= 1.3.0'
 # JS Runtime. See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -23,6 +20,9 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+
+# Use honeybadger for exception reporting
+gem 'honeybadger'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -68,9 +68,3 @@ end
 gem "devise"
 gem "devise-guests", "~> 0.3"
 gem "rest-client"
-
-# Use Squash for exception reporting
-gem 'squash_ruby', require: 'squash/ruby'
-
-# Pinned to 1.3.3 until https://github.com/SquareSquash/rails/pull/15
-gem 'squash_rails', '1.3.3', require: 'squash/rails'

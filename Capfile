@@ -20,7 +20,6 @@ require 'capistrano/deploy'
 require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/passenger'
-require 'squash/rails/capistrano3'
 require 'dlss/capistrano'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.

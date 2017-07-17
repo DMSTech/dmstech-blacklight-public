@@ -32,7 +32,6 @@ set :linked_files, %w{
   config/secrets.yml
   config/parker-master.yml
   config/devise_secret
-  config/initializers/squash.rb
 }
 
 # Default value for linked_dirs is []
@@ -43,7 +42,5 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/sys
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-
-before 'deploy:publishing', 'squash:write_revision'
 
 after "deploy", "deploy:migrate"

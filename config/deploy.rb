@@ -1,5 +1,3 @@
-lock '3.4.0'
-
 set :application, 'dms'
 set :repo_url, 'https://github.com/DMSTech/dmstech-blacklight-public.git'
 

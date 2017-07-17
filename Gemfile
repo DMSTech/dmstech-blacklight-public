@@ -21,8 +21,13 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+# Locking to 1.7.2 to address vulnerability
+# 1.8 is not compatible with the version of ruby that is currently deployed
+gem 'nokogiri', '= 1.7.2'
+
 # Use honeybadger for exception reporting
-gem 'honeybadger'
+# Using 2.x due to the version of ruby that is currently deployed
+gem 'honeybadger', '~> 2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

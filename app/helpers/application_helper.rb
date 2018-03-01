@@ -35,7 +35,7 @@ module ApplicationHelper
     middle_image_index = thumbnails[:images].length / 2
     middle_image = thumbnails[:images][middle_image_index]
     #preview_image_url = "/image/#{druid}/#{middle_image}/#{size}"
-    preview_image_url = "http://stacks.stanford.edu/image/iiif/#{druid}%252F#{middle_image}/full/,350/0/native.jpg"
+    preview_image_url = "http://stacks.stanford.edu/image/iiif/#{druid}%252F#{middle_image}/full/,350/0/default.jpg"
     return preview_image_url
   end
 
